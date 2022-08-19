@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+    function AddRow()
+    {
+      var nome = document.getElementById("nome").value;
+      var cpf = document.getElementById("cpf").value;
+      var rg = document.getElementById("rg").value;
+      var nascimento = document.getElementById("nascimento").value;
+      var end = document.getElementById("end").value;
+      var numero = document.getElementById("numero").value;
+      var bairro = document.getElementById("bairro").value;
+      var estado = document.getElementById("estado").value;
+      var contato = document.getElementById("contato").value;
+      var email = document.getElementById("email").value;
+      var profissao = document.getElementById("profissao").value;
+      var setor = document.getElementById("setor").value;
+      var empresa = document.getElementById("empresa").value;
+      var num = document.getElementById("num").value;
+      var bairro_emp = document.getElementById("bairro_emp").value;
+      var tel = document.getElementById("tel").value;
+      var renda = document.getElementById("renda").value;
+      var residencia = document.getElementById("residencia").value;
+      var opcao = document.getElementById("opcao").value;
+      var prof = document.getElementById("prof").value;
+      var qtde = document.getElementById("qtde").value;
+      var valor = document.getElementById("valor").value;
+      var datas = document.getElementById("datas").value;
+      var horarios = document.getElementById("horarios").value;
+      if(nome != '' && cpf != '' && rg != '' && nascimento != '' && end != '' && numero != '' && bairro != '' && 
+      estado != '' && contato != '' && email != '' && profissao != '' && setor != '' && empresa != '' && num != '' && bairro_emp != '' && tel != '' && renda != '' && residencia != '' && opcao != '' && prof != '' && qtde != ''  && valor != '' && datas != '' && horarios != '')
+      {
+      google.script.run.AddRecord(nome, cpf, rg, nascimento, end, numero, bairro, estado, contato, email, profissao, setor, empresa, num, bairro_emp, tel, renda, residencia, opcao, prof, qtde, valor, datas, horarios);
+      document.getElementById("nome").value = '';
+      document.getElementById("cpf").value = '';
+      document.getElementById("rg").value = '';
+      document.getElementById("nascimento").value = '';
+      document.getElementById("end").value = '';
+      document.getElementById("numero").value = '';
+      document.getElementById("bairro").value = '';
+      document.getElementById("estado").value = '';
+      document.getElementById("contato").value = '';
+      document.getElementById("email").value = '';
+      document.getElementById("profissao").value = '';
+      document.getElementById("setor").value = '';
+      document.getElementById("empresa").value = '';
+      document.getElementById("num").value = '';
+      document.getElementById("bairro_emp").value = '';
+      document.getElementById("tel").value = '';
+      document.getElementById("renda").value = '';
+      document.getElementById("residencia").value = '';
+      document.getElementById("opcao").value = '';
+      document.getElementById("prof").value = '';
+      document.getElementById("qtde").value = '';
+      document.getElementById("valor").value = '';
+      document.getElementById("datas").value = '';
+      document.getElementById("horarios").value = '';
+      document.getElementById("display_error").innerHTML = "";
+      }
+      else
+      {
+      document.getElementById("display_error").innerHTML = "Insira todas as informações!";
+      }
+    }
+    </script>
+  <!--Style-->
+  <style>
+
+
+  </style>
+  </head>
+  <body> 
+  <div style="padding: 10px;" >
+  <form id="msform">
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-5 text-center p-0 mt-3 mb-2">
+            <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <h2 id="heading">Agendamento</h2>
+                <p></p>
+                <form id="msform">
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active" id="dados"><strong>Dados</strong></li>
+                        <li id="triagem"><strong>Triagem</strong></li>
+                        <li id="agendamento"><strong>Agendamento</strong></li>
+                        <li id="confirm"><strong>Finalização</strong></li>
+                    </ul>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div> <br> 
+<!-- fieldsets -->
+<fieldset>
+ <div class="form-card">
+    <div class="row">
+    </div class="col-7">
+    <h2 class="fs-title">Informe seus dados:</h2>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+  <label for="nome">Nome Completo</label>
+  <input type="text" id="nome" class="form-control" />
+  </div>
+  <div class="form-group col-md-6">
+  <label for="cpf">CPF</label>
+  <input type="text" id="cpf" class="form-control" onkeypress="$(this).mask('000.000.000-00');"/>
+  </div> 
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+  <label for="rg">RG</label>
+  <input type="text" id="rg" class="form-control" onkeypress="$(this).mask('00.000.000-0');"/>
+  </div>
+  <div class="form-group col-md-6">
+  <label for="nascimento">Data de Nascimento</label>
+  <input type="text" id="nascimento" class="form-control" onkeypress="$(this).mask('00/00/0000')"/>
+  </div> 
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-10">
+  <label for="end">Endereço</label>
+  <input type="text" id="end" class="form-control" />
+  </div> 
+  <div class="form-group col-md-2">
+  <label for="numero" >Nº</label>
+  <input type="text" id="numero" class="form-control" />
+  </div> 
+  <div class="form-group col-md-6">
+  <label for="bairro" >Bairro</label>
+  <input type="text" id="bairro" class="form-control" />
+  </div>
+  <div class="form-group col-md-6">
+  <label for="estado">Estado civil</label>
+  <select id="estado" class="form-control">
+    <option disabled selected>Selecione...</option>
+    <option>Solteiro(a)</option>
+    <option>Casado(a)</option>
+    <option>Separado(a)</option>
+    <option>Divorciado(a)</option>
+    <option>Viúvo(a)</option>
+  </select>
+  </div> 
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+  <label for="contato">Contato</label>
+  <input type="text" id="contato" class="form-control" onkeypress="$(this).mask('(00) 00000-0009')"/>
+  </div> 
+  <div class="form-group col-md-6">
+  <label for="email">Email</label>
+  <input type="text" id="email" class="form-control" />
+  </div>
+  </div>
+
+
+
+
+  <input type="button" name="next" class="next action-button" value="Próximo" />
+</fieldset>
+
+<!--Triagem-->
+<fieldset>
+    <div class="form-card">
+    <div class="row">
+    </div class="col-7">
+    <h2 class="fs-title">Informe os dados do local de trabalho:</h2>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+  <label for="profissao">Profissão</label>
+  <input type="text" id="profissao" class="form-control" />
+  </div>
+  <div class="form-group col-md-6">
+  <label for="setor">Setor</label>
+  <input type="text" id="setor" class="form-control" />
+  </div> 
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-10">
+  <label for="empresa">Endereço</label>
+  <input type="text" id="empresa" class="form-control" />
+  </div> 
+  <div class="form-group col-md-2">
+  <label for="num" >Nº</label>
+  <input type="text" id="num" class="form-control" />
+  </div> 
+  <div class="form-group col-md-6">
+  <label for="bairro_emp" >Bairro</label>
+  <input type="text" id="bairro_emp" class="form-control" />
+  </div>
+  <div class="form-group col-md-6">
+  <label for="tel">Tel. Emrpresa</label>
+  <input type="text" id="tel" class="form-control" onkeypress="$(this).mask('(00) 00000-0009')"/>
+  </div> 
+  <div class="form-group col-md-6">
+  <label for="renda">Renda</label>
+  <input type="text" id="renda" class="form-control" onkeypress="$(this).mask('R$ #.##0,00', {reverse: true});"/>
+  </div>
+  <div class="form-group col-md-6">
+  <label for="residencia">Residência</label>
+  <select id="residencia" class="form-control">
+    <option disabled selected>Selecione...</option>
+    <option>Própria</option>
+    <option>Alugada</option>
+    <option>Cedida</option>
+    <option>Outro</option>
+  </select>
+  </div> 
+  </div>
+ <div class="form-row">
+  <div class="form-group col-md-6">
+  <label for="opcao">Possui pessoas que contribuem na renda familiar?</label>
+  <select id="opcao" onchange="cadastrarContribuicao()" class="plan">
+              <option value="" disabled selected>Selecione</option>
+              <option  value="Sim">Sim</option>
+              <option value="0">Não</option>
+            </select> 
+  </div>
+ </div>
+
+<div id="hidden_div" style="display: none;">
+        <div class="row">
+        <div class="form-group col-md-12">
+          <label for="prof">Profissão</label>
+          <input id="prof" placeholder="Instituição" type="text" class="nao">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="prof">Quantidade de contribuintes</label>
+          <select id="qtde" class="nao">
+              <option value="" disabled selected>Selecione</option>
+              <option disabled selected>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select> 
+        </div>
+        <div class="form-group col-md-6">
+          <label for="valor">Valor</label>
+          <input id="valor" type="text" class="nao" onkeypress="$(this).mask('R$ #.##0,00', {reverse: true});">
+          
+        </div>
+      </div>
+          </div>
+    <input type="button" name="next" class="next action-button" value="Próximo" /> 
+    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />   
+</fieldset>
+
+<!--Agendamento-->
+<fieldset>
+    <div class="form-card">
+    <div class="row">
+    </div class="col-7">
+    <h2 class="fs-title">Informe a data que deseja atendimento:</h2>
+  </div>
+  <div class="form-row">
+  <div class="form-group col-md-6">
+  <label for="data">Data</label>
+  <input type="date" id="datas" class="form-control" onkeypress="$(this).mask('00/00/0000')"/>
+  </div>
+  <div class="form-group col-md-6">
+  <label for="horario">Horário</label>
+  <select id="horarios" class="form-control" >
+              <option value="" disabled selected>Selecione</option>
+              <option>09:00</option>
+              <option>09:30</option>
+              <option>10:00</option>
+              <option>10:30</option>
+              <option>11:00</option>
+              <option>13:00</option>
+              <option>13:30</option>
+              <option>14:00</option>
+              <option>14:30</option>
+              <option>15:00</option>
+              <option>15:30</option>
+              <option>16:00</option>
+              <option>16:30</option>
+              <option>17:00</option>
+              <option>17:30</option>
+  </select> 
+  </div> 
+  </div>
+  
+    <input type="button" name="next" class="next action-button" value="Próximo"/> 
+    <input type="button" name="previous" class="previous action-button-previous" value="Anterior" />   
+    <div id="display_error" style="color: red" ></div>
+</fieldset>
+
+
+<!--Finalização-->
+ <fieldset>  
+    <h2>Condições</h2>
+    <h5>Sálarios maiores ou iguais à R$3.500 apenas a consulta</h5>
+ 
+  <div class="form-group col">
+  <input type="button" value="Enviar" class="btn btn-primary" style="color:green"  data-toggle="modal" data-target="#myModal" onclick="AddRow()"/>
+  <div id="display_error" style="color: red" ></div>
+  </div>
+</fieldset>
+</div>
+
+
+
+</form>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="form-card">
+    <div class="row">
+    <div class="col-7">
+    
+    </div>
+    </div> <br><br>
+    <h2 class="purple-text text-center"><strong>SUCESSO!</strong></h2> <br>
+    <div class="row justify-content-center">
+   <div class="col-3"> <img src="https://i.imgur.com/wgAXYtJ.png" class="fit-image"> </div>
+   </div> <br><br>
+    <div class="row justify-content-center">
+      <div class="col-7 text-center">
+         <h5 class="purple-text text-center">Você fez seu agendamento com sucesso</h5>
+      </div>
+    </div>
+  </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+</div>
+
+<div class="smoothscroll-top">
+    <span class="scroll-top-inner">
+        <i class="fa fa-2x fa-arrow-circle-up"></i>
+</div>
+
+
+  </body>
+</html>
